@@ -1,0 +1,98 @@
+{
+  "probe": "public_endpoint_latency",
+  "run_at_utc": "2026-08-27T13:41:47.442523+00:00",
+  "vantage_point": {
+    "description": "single vantage point, see caveats",
+    "platform": "macOS-26.5-arm64-arm-64bit",
+    "note": "Run from one machine on one network. Re-run from your own location: python3 bench/probe_latency.py"
+  },
+  "n_per_target": 20,
+  "caveats": "Single vantage point. Includes TLS + full response for small payloads. 401 responses measure auth-rejection latency, not data latency. Not comparable to odds update frequency.",
+  "vendors": {
+    "parlayapi": {
+      "name": "ParlayAPI",
+      "target": "keyless API endpoint /live/api/sports",
+      "url": "https://parlay-api.com/live/api/sports",
+      "n_ok": 20,
+      "errors": 0,
+      "response_statuses_seen": [
+        200
+      ],
+      "median_s": 0.3271,
+      "p90_s": 0.531,
+      "min_s": 0.2781,
+      "max_s": 0.782
+    },
+    "the_odds_api": {
+      "name": "The Odds API",
+      "target": "API edge: /v4/sports (returns 401 without key; measures edge round trip only)",
+      "url": "https://api.the-odds-api.com/v4/sports",
+      "n_ok": 20,
+      "errors": 0,
+      "response_statuses_seen": [
+        401
+      ],
+      "median_s": 0.2612,
+      "p90_s": 0.2893,
+      "min_s": 0.1838,
+      "max_s": 0.364
+    },
+    "oddspapi": {
+      "name": "OddsPapi",
+      "target": "API edge: /v4/sports (returns 401 without key; measures edge round trip only)",
+      "url": "https://api.oddspapi.io/v4/sports",
+      "n_ok": 20,
+      "errors": 0,
+      "response_statuses_seen": [
+        401
+      ],
+      "median_s": 0.3123,
+      "p90_s": 0.4289,
+      "min_s": 0.2722,
+      "max_s": 0.5548
+    },
+    "sharpapi": {
+      "name": "SharpAPI",
+      "target": "API edge: /api/v1/odds (returns 401 without key; measures edge round trip only)",
+      "url": "https://api.sharpapi.io/api/v1/odds",
+      "n_ok": 20,
+      "errors": 0,
+      "response_statuses_seen": [
+        401,
+        429
+      ],
+      "median_s": 0.3044,
+      "p90_s": 0.5046,
+      "min_s": 0.232,
+      "max_s": 0.7708
+    },
+    "sportsgameodds": {
+      "name": "SportsGameOdds",
+      "target": "API edge: /v2/sports (returns 401 without key; measures edge round trip only)",
+      "url": "https://api.sportsgameodds.com/v2/sports",
+      "n_ok": 20,
+      "errors": 0,
+      "response_statuses_seen": [
+        401
+      ],
+      "median_s": 0.3947,
+      "p90_s": 0.9495,
+      "min_s": 0.2474,
+      "max_s": 2.1808
+    },
+    "therundown": {
+      "name": "TheRundown",
+      "target": "keyless API endpoint /api/v2/sports",
+      "url": "https://therundown.io/api/v2/sports",
+      "n_ok": 20,
+      "errors": 0,
+      "response_statuses_seen": [
+        200
+      ],
+      "median_s": 0.2553,
+      "p90_s": 0.2893,
+      "min_s": 0.1783,
+      "max_s": 0.3165
+    }
+  }
+}

@@ -1,0 +1,139 @@
+{
+  "probe": "unauthenticated_surface",
+  "run_at_utc": "2026-08-27T13:41:22.870251+00:00",
+  "note": "Each probe is a single GET with no API key. Classification: keyless_json = works without signup; requires_key = 401/403.",
+  "vendors": {
+    "parlayapi": {
+      "name": "ParlayAPI",
+      "keyless_endpoints_found": 6,
+      "probes": [
+        {
+          "label": "GET /v1/sandbox/sports (synthetic sandbox)",
+          "url": "https://parlay-api.com/v1/sandbox/sports",
+          "documented_at": "https://parlay-api.com/docs",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        },
+        {
+          "label": "GET /live/api/sports (live sport keys)",
+          "url": "https://parlay-api.com/live/api/sports",
+          "documented_at": "https://parlay-api.com/docs",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        },
+        {
+          "label": "GET /v1/meta/credit-costs (credit price list)",
+          "url": "https://parlay-api.com/v1/meta/credit-costs",
+          "documented_at": "https://parlay-api.com/docs",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        },
+        {
+          "label": "GET /v1/meta/source-quality",
+          "url": "https://parlay-api.com/v1/meta/source-quality",
+          "documented_at": "https://parlay-api.com/docs",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        },
+        {
+          "label": "GET /v1/calc/kelly (bet calculator)",
+          "url": "https://parlay-api.com/v1/calc/kelly?win_prob=0.55&odds=2.0&bankroll=1000",
+          "documented_at": "https://parlay-api.com/docs",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        },
+        {
+          "label": "GET /v1/prediction-markets/search",
+          "url": "https://parlay-api.com/v1/prediction-markets/search?q=nfl",
+          "documented_at": "https://parlay-api.com/docs",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        }
+      ]
+    },
+    "the_odds_api": {
+      "name": "The Odds API",
+      "keyless_endpoints_found": 0,
+      "probes": [
+        {
+          "label": "GET /v4/sports without key",
+          "url": "https://api.the-odds-api.com/v4/sports",
+          "documented_at": "https://the-odds-api.com/liveapi/guides/v4/",
+          "status": 401,
+          "classification": "requires_key",
+          "error": null
+        }
+      ]
+    },
+    "oddspapi": {
+      "name": "OddsPapi",
+      "keyless_endpoints_found": 0,
+      "probes": [
+        {
+          "label": "GET /v4/sports without key",
+          "url": "https://api.oddspapi.io/v4/sports",
+          "documented_at": "https://oddspapi.io/us/docs",
+          "status": 401,
+          "classification": "requires_key",
+          "error": null
+        }
+      ]
+    },
+    "sharpapi": {
+      "name": "SharpAPI",
+      "keyless_endpoints_found": 0,
+      "probes": [
+        {
+          "label": "GET /api/v1/odds without key",
+          "url": "https://api.sharpapi.io/api/v1/odds",
+          "documented_at": "https://docs.sharpapi.io/en/",
+          "status": 401,
+          "classification": "requires_key",
+          "error": null
+        }
+      ]
+    },
+    "sportsgameodds": {
+      "name": "SportsGameOdds",
+      "keyless_endpoints_found": 0,
+      "probes": [
+        {
+          "label": "GET /v2/sports without key",
+          "url": "https://api.sportsgameodds.com/v2/sports",
+          "documented_at": "https://sportsgameodds.com/docs",
+          "status": 401,
+          "classification": "requires_key",
+          "error": null
+        }
+      ]
+    },
+    "therundown": {
+      "name": "TheRundown",
+      "keyless_endpoints_found": 2,
+      "probes": [
+        {
+          "label": "GET /api/v2/sports (reference data, documented as keyless)",
+          "url": "https://therundown.io/api/v2/sports",
+          "documented_at": "https://docs.therundown.io/quickstart",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        },
+        {
+          "label": "GET /api/v2/affiliates (reference data)",
+          "url": "https://therundown.io/api/v2/affiliates",
+          "documented_at": "https://docs.therundown.io/quickstart",
+          "status": 200,
+          "classification": "keyless_json",
+          "error": null
+        }
+      ]
+    }
+  }
+}

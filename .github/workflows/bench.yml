@@ -1,0 +1,40 @@
+name: weekly-benchmark
+
+on:
+  schedule:
+    # Mondays 06:00 UTC
+    - cron: "0 6 * * 1"
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+concurrency:
+  group: bench
+  cancel-in-progress: false
+
+jobs:
+  bench:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run all probes and regenerate README
+        run: python3 bench/run_all.py
+
+      - name: Commit results
+        run: |
+          git config user.name "odds-api-benchmarks bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add results README.md
+          if git diff --cached --quiet; then
+            echo "No changes to commit."
+          else
+            git commit -m "bench: automated weekly run $(date -u +%F)"
+            git push
+          fi

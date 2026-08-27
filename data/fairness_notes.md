@@ -1,0 +1,12 @@
+## Fairness notes: what each vendor does well
+
+A benchmark maintained by one vendor's founder owes you this section. Based on the latest committed results and the cited vendor pages:
+
+- **The Odds API** runs a public status page with visible uptime history and status update history, which ParlayAPI's live status page does not show (ParlayAPI's page shows current per-source freshness, not historical uptime). Its free tier requires no configuration and its pricing page states plan sizes in one screen.
+- **SharpAPI** has the highest free request throughput measured here by rate (12 req/min with no stated monthly cap), publishes a public status page, an llms.txt, and a machine-readable OpenAPI spec that this benchmark's probes validated.
+- **TheRundown** offers the largest stated daily free allowance in this comparison (20,000 data points/day per its pricing page), covers prediction-market exchanges (Kalshi, Polymarket, Novig, ProphetX), and its reference endpoints answered keyless probes with real JSON.
+- **OddsPapi** claims the largest bookmaker count in this comparison (350+ per its own pages, including sharp books and exchanges) and publishes an llms.txt. Its build-your-own pricing calculator lets you pay for only the books and sports you need.
+- **SportsGameOdds** publishes both an llms.txt and a machine-readable OpenAPI spec that this benchmark's probes validated, and prices per event object rather than per market/book combination, which can be materially cheaper for wide market coverage; its pricing page states plan terms plainly.
+- **ParlayAPI** (the maintainer's product) scored best on keyless surface in this run, but note what it lacks versus the others: no public uptime/incident history was detected on its status page, and its pricing page does not state a total sportsbook count.
+
+If any of this is stale or wrong, open a PR with the vendor's current page and read date.
