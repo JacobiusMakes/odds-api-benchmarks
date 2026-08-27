@@ -1,6 +1,6 @@
 {
   "probe": "unauthenticated_surface",
-  "run_at_utc": "2026-08-27T13:41:22.870251+00:00",
+  "run_at_utc": "2026-08-27T13:49:03.106285+00:00",
   "note": "Each probe is a single GET with no API key. Classification: keyless_json = works without signup; requires_key = 401/403.",
   "vendors": {
     "parlayapi": {

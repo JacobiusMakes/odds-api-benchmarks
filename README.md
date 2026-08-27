@@ -78,12 +78,12 @@ n=20 sequential GETs per target, median and p90 of total round-trip time. Raw sa
 
 | Vendor | Target | Statuses seen | Median | p90 |
 |---|---|---|---|---|
-| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 327 ms | 531 ms |
-| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 261 ms | 289 ms |
-| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 312 ms | 429 ms |
-| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 304 ms | 505 ms |
-| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 395 ms | 950 ms |
-| TheRundown | keyless API endpoint /api/v2/sports | [200] | 255 ms | 289 ms |
+| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 265 ms | 546 ms |
+| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 200 ms | 237 ms |
+| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 207 ms | 362 ms |
+| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 224 ms | 233 ms |
+| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 177 ms | 743 ms |
+| TheRundown | keyless API endpoint /api/v2/sports | [200] | 130 ms | 299 ms |
 
 ## Fairness notes: what each vendor does well
 

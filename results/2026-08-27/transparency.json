@@ -1,6 +1,6 @@
 {
   "probe": "transparency",
-  "run_at_utc": "2026-08-27T13:41:44.343554+00:00",
+  "run_at_utc": "2026-08-27T13:49:23.027255+00:00",
   "note": "Status page detection = HTTP 200 at a candidate URL. History flags are keyword checks against the fetched HTML and can miss JS-rendered content.",
   "vendors": {
     "parlayapi": {
@@ -16,7 +16,7 @@
           {
             "url": "https://status.parlay-api.com/",
             "status": null,
-            "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+            "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
           }
         ]
       },
@@ -46,7 +46,7 @@
           {
             "url": "https://status.oddspapi.io/",
             "status": null,
-            "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+            "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
           }
         ]
       },
@@ -76,7 +76,7 @@
           {
             "url": "https://status.sportsgameodds.com/",
             "status": null,
-            "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+            "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
           }
         ]
       },
@@ -91,7 +91,7 @@
           {
             "url": "https://status.therundown.io/",
             "status": null,
-            "error": "URLError: <urlopen error [Errno 8] nodename nor servname provided, or not known>"
+            "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
           }
         ]
       },

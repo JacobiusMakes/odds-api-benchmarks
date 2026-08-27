@@ -1,9 +1,9 @@
 {
   "probe": "public_endpoint_latency",
-  "run_at_utc": "2026-08-27T13:41:47.442523+00:00",
+  "run_at_utc": "2026-08-27T13:49:25.714472+00:00",
   "vantage_point": {
     "description": "single vantage point, see caveats",
-    "platform": "macOS-26.5-arm64-arm-64bit",
+    "platform": "Linux-6.17.0-1022-azure-x86_64-with-glibc2.39",
     "note": "Run from one machine on one network. Re-run from your own location: python3 bench/probe_latency.py"
   },
   "n_per_target": 20,
@@ -18,10 +18,10 @@
       "response_statuses_seen": [
         200
       ],
-      "median_s": 0.3271,
-      "p90_s": 0.531,
-      "min_s": 0.2781,
-      "max_s": 0.782
+      "median_s": 0.2653,
+      "p90_s": 0.5462,
+      "min_s": 0.2115,
+      "max_s": 0.7616
     },
     "the_odds_api": {
       "name": "The Odds API",
@@ -32,10 +32,10 @@
       "response_statuses_seen": [
         401
       ],
-      "median_s": 0.2612,
-      "p90_s": 0.2893,
-      "min_s": 0.1838,
-      "max_s": 0.364
+      "median_s": 0.1995,
+      "p90_s": 0.2371,
+      "min_s": 0.0859,
+      "max_s": 0.2654
     },
     "oddspapi": {
       "name": "OddsPapi",
@@ -46,10 +46,10 @@
       "response_statuses_seen": [
         401
       ],
-      "median_s": 0.3123,
-      "p90_s": 0.4289,
-      "min_s": 0.2722,
-      "max_s": 0.5548
+      "median_s": 0.2073,
+      "p90_s": 0.3616,
+      "min_s": 0.1869,
+      "max_s": 0.3958
     },
     "sharpapi": {
       "name": "SharpAPI",
@@ -61,10 +61,10 @@
         401,
         429
       ],
-      "median_s": 0.3044,
-      "p90_s": 0.5046,
-      "min_s": 0.232,
-      "max_s": 0.7708
+      "median_s": 0.2238,
+      "p90_s": 0.2328,
+      "min_s": 0.2134,
+      "max_s": 0.2517
     },
     "sportsgameodds": {
       "name": "SportsGameOdds",
@@ -75,10 +75,10 @@
       "response_statuses_seen": [
         401
       ],
-      "median_s": 0.3947,
-      "p90_s": 0.9495,
-      "min_s": 0.2474,
-      "max_s": 2.1808
+      "median_s": 0.1767,
+      "p90_s": 0.7429,
+      "min_s": 0.1085,
+      "max_s": 2.4179
     },
     "therundown": {
       "name": "TheRundown",
@@ -89,10 +89,10 @@
       "response_statuses_seen": [
         200
       ],
-      "median_s": 0.2553,
-      "p90_s": 0.2893,
-      "min_s": 0.1783,
-      "max_s": 0.3165
+      "median_s": 0.1301,
+      "p90_s": 0.2989,
+      "min_s": 0.1029,
+      "max_s": 0.3023
     }
   }
 }
