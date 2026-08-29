@@ -1,10 +1,12 @@
 # odds-api-benchmarks
 
+[![ParlayAPI p50](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FJacobiusMakes%2Fodds-api-benchmarks%2Fmain%2Fbadge-latency.json)](RESULTS.md) badge = ParlayAPI's own p50 from the latest weekly run, single vantage point; full table with every vendor, caveats included, in [RESULTS.md](RESULTS.md).
+
 Reproducible, no-key-required benchmarks of sports odds APIs: [ParlayAPI](https://parlay-api.com), [The Odds API](https://the-odds-api.com), [OddsPapi](https://oddspapi.io), [SharpAPI](https://sharpapi.io), [SportsGameOdds](https://sportsgameodds.com), [TheRundown](https://therundown.io).
 
 > **Disclosure:** this repo is maintained by ParlayAPI's founder. That is exactly why every number here is produced by a script you can run yourself, from this repo alone, with no API keys and no accounts. If a cell is wrong, the probe or the citation is wrong, and a PR fixes it. **PRs from competitors are welcome and will be merged if honest.**
 
-Latest run: **2026-08-27**, committed under [`results/2026-08-27/`](results/2026-08-27/). A GitHub Action re-runs the probes weekly (Monday 06:00 UTC). See [METHODOLOGY.md](METHODOLOGY.md) for scope and limitations, which are significant: v1 measures only what is measurable without paid keys. It says nothing about paid-tier data quality, odds accuracy, or update speed.
+Latest run: **2026-08-29**, committed under [`results/2026-08-29/`](results/2026-08-29/). A GitHub Action re-runs the probes weekly (Monday 06:00 UTC). See [METHODOLOGY.md](METHODOLOGY.md) for scope and limitations, which are significant: v1 measures only what is measurable without paid keys. It says nothing about paid-tier data quality, odds accuracy, or update speed.
 
 ## Run it yourself
 
@@ -18,7 +20,7 @@ That reruns every probe from your machine and regenerates this README from your 
 
 ## 1. Try-before-signup surface (probed live)
 
-Single GET to each vendor's documented endpoints with **no API key**. Raw outcomes in [`results/2026-08-27/unauth.json`](results/2026-08-27/unauth.json).
+Single GET to each vendor's documented endpoints with **no API key**. Raw outcomes in [`results/2026-08-29/unauth.json`](results/2026-08-29/unauth.json).
 
 | Vendor | Keyless endpoints found | Probe outcomes |
 |---|---|---|
@@ -33,7 +35,7 @@ Probe targets and the docs page documenting each are listed in [`data/vendors.js
 
 ## 2. Free tier terms (vendor claims, cited)
 
-These are the vendors' own claims from their own public pages, quoted with source URL and read date. They are **not** measurements. Snapshot: [`results/2026-08-27/free_tier.json`](results/2026-08-27/free_tier.json).
+These are the vendors' own claims from their own public pages, quoted with source URL and read date. They are **not** measurements. Snapshot: [`results/2026-08-29/free_tier.json`](results/2026-08-29/free_tier.json).
 
 | Vendor | Free allowance | Card required | Free tier delay | Book count claim | Source |
 |---|---|---|---|---|---|
@@ -46,7 +48,7 @@ These are the vendors' own claims from their own public pages, quoted with sourc
 
 ## 3. Docs quality signals (probed live)
 
-Raw outcomes in [`results/2026-08-27/docs.json`](results/2026-08-27/docs.json). "no" means not found at the candidate URLs in `data/vendors.json`; PR the correct URL if one exists elsewhere.
+Raw outcomes in [`results/2026-08-29/docs.json`](results/2026-08-29/docs.json). "no" means not found at the candidate URLs in `data/vendors.json`; PR the correct URL if one exists elsewhere.
 
 | Vendor | Machine-readable OpenAPI spec | llms.txt |
 |---|---|---|
@@ -59,7 +61,7 @@ Raw outcomes in [`results/2026-08-27/docs.json`](results/2026-08-27/docs.json). 
 
 ## 4. Transparency (probed live)
 
-Raw outcomes in [`results/2026-08-27/transparency.json`](results/2026-08-27/transparency.json). History columns are shallow keyword checks against the fetched HTML; JS-rendered status pages can under-report, so treat a "no" here as "not detected", not "absent".
+Raw outcomes in [`results/2026-08-29/transparency.json`](results/2026-08-29/transparency.json). History columns are shallow keyword checks against the fetched HTML; JS-rendered status pages can under-report, so treat a "no" here as "not detected", not "absent".
 
 | Vendor | Public status page | Uptime history detected | Incident/update history detected |
 |---|---|---|---|
@@ -72,18 +74,18 @@ Raw outcomes in [`results/2026-08-27/transparency.json`](results/2026-08-27/tran
 
 ## 5. Public endpoint latency, one vantage point (probed live)
 
-n=20 sequential GETs per target, median and p90 of total round-trip time. Raw samples context in [`results/2026-08-27/latency.json`](results/2026-08-27/latency.json).
+n=20 sequential GETs per target, median and p90 of total round-trip time. Raw samples context in [`results/2026-08-29/latency.json`](results/2026-08-29/latency.json). A p50/p95 summary table with success rates is regenerated into [RESULTS.md](RESULTS.md) on every run, along with the badge data in `badge-latency.json`.
 
 **Caveats, do not skip:** Single vantage point. Includes TLS + full response for small payloads. 401 responses measure auth-rejection latency, not data latency. Not comparable to odds update frequency.
 
 | Vendor | Target | Statuses seen | Median | p90 |
 |---|---|---|---|---|
-| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 265 ms | 546 ms |
-| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 200 ms | 237 ms |
-| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 207 ms | 362 ms |
-| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 224 ms | 233 ms |
-| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 177 ms | 743 ms |
-| TheRundown | keyless API endpoint /api/v2/sports | [200] | 130 ms | 299 ms |
+| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 143 ms | 723 ms |
+| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 63 ms | 164 ms |
+| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 124 ms | 134 ms |
+| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 26 ms | 46 ms |
+| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 71 ms | 89 ms |
+| TheRundown | keyless API endpoint /api/v2/sports | [200] | 40 ms | 53 ms |
 
 ## Fairness notes: what each vendor does well
 
@@ -91,10 +93,10 @@ A benchmark maintained by one vendor's founder owes you this section. Based on t
 
 - **The Odds API** runs a public status page with visible uptime history and status update history, which ParlayAPI's live status page does not show (ParlayAPI's page shows current per-source freshness, not historical uptime). Its free tier requires no configuration and its pricing page states plan sizes in one screen.
 - **SharpAPI** has the highest free request throughput measured here by rate (12 req/min with no stated monthly cap), publishes a public status page, an llms.txt, and a machine-readable OpenAPI spec that this benchmark's probes validated.
-- **TheRundown** offers the largest stated daily free allowance in this comparison (20,000 data points/day per its pricing page), covers prediction-market exchanges (Kalshi, Polymarket, Novig, ProphetX), and its reference endpoints answered keyless probes with real JSON.
+- **TheRundown** offers the largest stated daily free allowance in this comparison (20,000 data points/day per its pricing page), covers prediction-market exchanges (Kalshi, Polymarket, Novig, ProphetX), and its reference endpoints answered keyless probes with real JSON. It has also been the fastest keyless-200 endpoint in this repo's latency probe, faster than ParlayAPI's keyless endpoint in recent committed runs; see the latest latency table and [RESULTS.md](RESULTS.md) for current numbers.
 - **OddsPapi** claims the largest bookmaker count in this comparison (350+ per its own pages, including sharp books and exchanges) and publishes an llms.txt. Its build-your-own pricing calculator lets you pay for only the books and sports you need.
 - **SportsGameOdds** publishes both an llms.txt and a machine-readable OpenAPI spec that this benchmark's probes validated, and prices per event object rather than per market/book combination, which can be materially cheaper for wide market coverage; its pricing page states plan terms plainly.
-- **ParlayAPI** (the maintainer's product) scored best on keyless surface in this run, but note what it lacks versus the others: no public uptime/incident history was detected on its status page, and its pricing page does not state a total sportsbook count.
+- **ParlayAPI** (the maintainer's product) scored best on keyless surface in this run, but note what it lacks versus the others: no public uptime/incident history was detected on its status page, its pricing page does not state a total sportsbook count, and its keyless endpoint has not been the fastest in this repo's own latency probe.
 
 If any of this is stale or wrong, open a PR with the vendor's current page and read date.
 
