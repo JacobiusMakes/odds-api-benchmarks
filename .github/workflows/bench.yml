@@ -31,7 +31,7 @@ jobs:
         run: |
           git config user.name "odds-api-benchmarks bot"
           git config user.email "actions@users.noreply.github.com"
-          git add results README.md
+          git add results README.md RESULTS.md badge-latency.json
           if git diff --cached --quiet; then
             echo "No changes to commit."
           else

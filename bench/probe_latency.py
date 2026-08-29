@@ -54,17 +54,21 @@ def main(out_dir):
                 samples.append(r["elapsed_s"])
                 statuses.add(r["status"])
             time.sleep(0.25)
+        ordered = sorted(samples)
         entry = {
             "name": v["name"],
             "target": t["label"],
             "url": t["url"],
+            "n_attempted": N,
             "n_ok": len(samples),
             "errors": errors,
             "response_statuses_seen": sorted(statuses),
             "median_s": round(statistics.median(samples), 4) if samples else None,
-            "p90_s": round(sorted(samples)[max(0, int(len(samples) * 0.9) - 1)], 4) if samples else None,
+            "p90_s": round(ordered[max(0, int(len(samples) * 0.9) - 1)], 4) if samples else None,
+            "p95_s": round(ordered[max(0, int(len(samples) * 0.95) - 1)], 4) if samples else None,
             "min_s": round(min(samples), 4) if samples else None,
             "max_s": round(max(samples), 4) if samples else None,
+            "samples_s": [round(s, 4) for s in samples],
         }
         out["vendors"][vid] = entry
         print(f"  {v['name']}: median={entry['median_s']}s statuses={entry['response_statuses_seen']}")

@@ -20,6 +20,7 @@ import probe_docs
 import probe_latency
 import probe_transparency
 import generate_readme
+import generate_results
 
 
 def main():
@@ -41,6 +42,7 @@ def main():
     print(f"snapshotted data/free_tier.json into {out_dir}")
 
     generate_readme.main(date)
+    generate_results.main(date)
 
 
 if __name__ == "__main__":

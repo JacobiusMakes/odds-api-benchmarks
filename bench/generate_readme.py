@@ -43,6 +43,11 @@ def main(date=None):
     A = L.append
     A("# odds-api-benchmarks")
     A("")
+    A("[![ParlayAPI p50](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com"
+      "%2FJacobiusMakes%2Fodds-api-benchmarks%2Fmain%2Fbadge-latency.json)](RESULTS.md) "
+      "badge = ParlayAPI's own p50 from the latest weekly run, single vantage point; "
+      "full table with every vendor, caveats included, in [RESULTS.md](RESULTS.md).")
+    A("")
     A("Reproducible, no-key-required benchmarks of sports odds APIs: "
       "[ParlayAPI](https://parlay-api.com), [The Odds API](https://the-odds-api.com), "
       "[OddsPapi](https://oddspapi.io), [SharpAPI](https://sharpapi.io), "
@@ -145,7 +150,9 @@ def main(date=None):
     A("## 5. Public endpoint latency, one vantage point (probed live)")
     A("")
     A(f"n={lat['n_per_target']} sequential GETs per target, median and p90 of total round-trip time. "
-      f"Raw samples context in [`results/{date}/latency.json`](results/{date}/latency.json).")
+      f"Raw samples context in [`results/{date}/latency.json`](results/{date}/latency.json). "
+      "A p50/p95 summary table with success rates is regenerated into [RESULTS.md](RESULTS.md) "
+      "on every run, along with the badge data in `badge-latency.json`.")
     A("")
     A("**Caveats, do not skip:** " + lat["caveats"])
     A("")
@@ -175,7 +182,7 @@ def main(date=None):
     A("")
 
     readme = "\n".join(L)
-    for bad in ("—", "–"):
+    for bad in ("\u2014", "\u2013"):
         assert bad not in readme, "em/en dash found in generated README"
     (ROOT / "README.md").write_text(readme)
     print(f"wrote {ROOT / 'README.md'} from results/{date}")

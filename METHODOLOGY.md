@@ -22,7 +22,7 @@ All probes are stdlib-only Python, sequential, with a 15s timeout and an honest 
 | Try-before-signup surface | `bench/probe_unauth.py` | HTTP status of a single keyless GET to each documented endpoint, classified (keyless JSON / requires key / etc.) |
 | Docs signals | `bench/probe_docs.py` | Whether a machine-validated OpenAPI spec and an llms.txt exist at candidate URLs. Specs are validated by content (an `openapi`/`swagger` key), not just a 200. |
 | Transparency | `bench/probe_transparency.py` | Whether a public status page answers 200, and keyword-level detection of uptime and incident history on it |
-| Latency | `bench/probe_latency.py` | n=20 sequential GETs per vendor to its most public endpoint, 250ms apart, after one discarded warm-up. Median, p90, min, max, and the set of HTTP statuses seen |
+| Latency | `bench/probe_latency.py` | n=20 sequential GETs per vendor to its most public endpoint, 250ms apart, after one discarded warm-up. Median (p50), p90, p95, min, max, raw samples, and the set of HTTP statuses seen |
 | Free tier snapshot | `bench/run_all.py` | Copies `data/free_tier.json` (curated claims with citations) into the dated results directory so the claims are versioned with the run |
 
 ## Reproducing
@@ -38,6 +38,11 @@ Individual probes run standalone: `python3 bench/probe_docs.py [results/dir]`.
 ## Scheduled runs
 
 `.github/workflows/bench.yml` reruns everything weekly (Monday 06:00 UTC) and on manual dispatch from GitHub's hosted runners, committing the dated results and the regenerated README. GitHub runners are a different vantage point than the maintainer's machine; the latency file records the platform it ran on.
+
+Each run also regenerates two publication artifacts via `bench/generate_results.py`:
+
+- `RESULTS.md`: the latest latency run as one table (provider, what was measured, statuses, p50, p95, success rate, sample size, run date), with the same caveats as the README. This is the file to link when quoting a number.
+- `badge-latency.json`: a [shields.io endpoint](https://shields.io/badges/endpoint-badge) payload carrying ParlayAPI's own p50 from the latest run. It is deliberately non-comparative: one vendor's number, no ranking. The comparison, and whether ParlayAPI was fastest (it has not been on keyless-200 targets; see TheRundown in the fairness notes), lives in the tables with their caveats.
 
 ## Fairness commitments
 
