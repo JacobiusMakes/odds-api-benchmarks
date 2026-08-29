@@ -2,14 +2,14 @@
   "description": "Free tier terms as stated on each vendor's OWN public pages. Every cell carries the source URL and the date it was read. These are vendor claims, not measurements. If a vendor changes terms, open a PR or an issue with the new source URL.",
   "vendors": {
     "parlayapi": {
-      "free_allowance": "1,000 requests/month",
+      "free_allowance": "1,000 credits/month per the pricing page (the homepage phrases it as 1,000 requests/month; per-endpoint credit costs are published at /v1/meta/credit-costs)",
       "card_required": "No ('no credit card required')",
       "free_tier_delay": "Not stated as a delay; free tier includes 48 hours of historical access",
-      "book_count_claim": "Not stated as a single number on the cited pages",
+      "book_count_claim": "'30+ sportsbooks' on both the homepage and the pricing page",
       "notes": "Homepage states the free key covers all 90+ sport keys; pricing page states the free tier never expires.",
       "sources": [
-        {"url": "https://parlay-api.com/pricing", "read_date": "2026-08-27"},
-        {"url": "https://parlay-api.com/", "read_date": "2026-08-27"}
+        {"url": "https://parlay-api.com/pricing", "read_date": "2026-08-29"},
+        {"url": "https://parlay-api.com/", "read_date": "2026-08-29"}
       ]
     },
     "the_odds_api": {
