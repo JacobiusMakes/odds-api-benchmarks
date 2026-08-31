@@ -2,17 +2,17 @@
 
 > **Disclosure:** this repo is maintained by ParlayAPI's founder. Every number below is produced by [`bench/probe_latency.py`](bench/probe_latency.py), which you can rerun yourself with no API keys. See [METHODOLOGY.md](METHODOLOGY.md) and the caveats before quoting anything.
 
-Run date: **2026-08-29** (UTC, 2026-08-29T13:12:29.160961+00:00). Vantage point: `Linux-6.17.0-1022-azure-x86_64-with-glibc2.39` (a GitHub-hosted runner for scheduled runs). Raw samples: [`results/2026-08-29/latency.json`](results/2026-08-29/latency.json).
+Run date: **2026-08-31** (UTC, 2026-08-31T13:03:47.628677+00:00). Vantage point: `Linux-6.17.0-1022-azure-x86_64-with-glibc2.39` (a GitHub-hosted runner for scheduled runs). Raw samples: [`results/2026-08-31/latency.json`](results/2026-08-31/latency.json).
 
 **Caveats, do not skip:** Single vantage point. Includes TLS + full response for small payloads. 401 responses measure auth-rejection latency, not data latency. Not comparable to odds update frequency. Rows whose status is 401 are not comparable to rows serving real data with a 200.
 
 | Provider | What was measured | Statuses seen | p50 | p95 | Success rate | Sample size | Run date |
 |---|---|---|---|---|---|---|---|
-| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 143 ms | 825 ms | 20/20 | 20 | 2026-08-29 |
-| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 63 ms | 168 ms | 20/20 | 20 | 2026-08-29 |
-| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 124 ms | 137 ms | 20/20 | 20 | 2026-08-29 |
-| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 26 ms | 48 ms | 20/20 | 20 | 2026-08-29 |
-| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 71 ms | 1840 ms | 20/20 | 20 | 2026-08-29 |
-| TheRundown | keyless API endpoint /api/v2/sports | [200] | 40 ms | 55 ms | 20/20 | 20 | 2026-08-29 |
+| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 135 ms | 401 ms | 20/20 | 20 | 2026-08-31 |
+| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 47 ms | 89 ms | 20/20 | 20 | 2026-08-31 |
+| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 128 ms | 222 ms | 20/20 | 20 | 2026-08-31 |
+| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 15 ms | 43 ms | 20/20 | 20 | 2026-08-31 |
+| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 58 ms | 458 ms | 20/20 | 20 | 2026-08-31 |
+| TheRundown | keyless API endpoint /api/v2/sports | [200] | 33 ms | 60 ms | 20/20 | 20 | 2026-08-31 |
 
 A row's p50/p95 are the median and 95th percentile of total round-trip time over the sample; success rate is completed HTTP exchanges (any status) over attempts. History of all runs lives in [`results/`](results/).
