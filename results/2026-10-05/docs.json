@@ -1,0 +1,195 @@
+{
+  "probe": "docs_quality_signals",
+  "run_at_utc": "2026-10-05T13:59:03.195634+00:00",
+  "note": "'found: null' means not found at the candidate URLs listed in data/vendors.json, not proof it does not exist anywhere.",
+  "vendors": {
+    "parlayapi": {
+      "name": "ParlayAPI",
+      "openapi_spec": {
+        "found": "https://parlay-api.com/openapi.json",
+        "candidates_checked": [
+          {
+            "url": "https://parlay-api.com/openapi.json",
+            "status": 200,
+            "valid_spec": true
+          }
+        ]
+      },
+      "llms_txt": {
+        "found": "https://parlay-api.com/llms.txt",
+        "candidates_checked": [
+          {
+            "url": "https://parlay-api.com/llms.txt",
+            "status": 200,
+            "valid": true
+          }
+        ]
+      }
+    },
+    "the_odds_api": {
+      "name": "The Odds API",
+      "openapi_spec": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://api.the-odds-api.com/v4/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          },
+          {
+            "url": "https://the-odds-api.com/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          },
+          {
+            "url": "https://the-odds-api.com/liveapi/guides/v4/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          }
+        ]
+      },
+      "llms_txt": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://the-odds-api.com/llms.txt",
+            "status": 404,
+            "valid": false
+          }
+        ]
+      }
+    },
+    "oddspapi": {
+      "name": "OddsPapi",
+      "openapi_spec": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://api.oddspapi.io/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          },
+          {
+            "url": "https://oddspapi.io/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          }
+        ]
+      },
+      "llms_txt": {
+        "found": "https://oddspapi.io/llms.txt",
+        "candidates_checked": [
+          {
+            "url": "https://oddspapi.io/llms.txt",
+            "status": 200,
+            "valid": true
+          }
+        ]
+      }
+    },
+    "sharpapi": {
+      "name": "SharpAPI",
+      "openapi_spec": {
+        "found": "https://docs.sharpapi.io/openapi.json",
+        "candidates_checked": [
+          {
+            "url": "https://docs.sharpapi.io/openapi.json",
+            "status": 200,
+            "valid_spec": true
+          },
+          {
+            "url": "https://api.sharpapi.io/api/v1/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          }
+        ]
+      },
+      "llms_txt": {
+        "found": "https://sharpapi.io/llms.txt",
+        "candidates_checked": [
+          {
+            "url": "https://sharpapi.io/llms.txt",
+            "status": 200,
+            "valid": true
+          },
+          {
+            "url": "https://docs.sharpapi.io/llms.txt",
+            "status": 200,
+            "valid": true
+          }
+        ]
+      }
+    },
+    "sportsgameodds": {
+      "name": "SportsGameOdds",
+      "openapi_spec": {
+        "found": "https://sportsgameodds.com/openapi.json",
+        "candidates_checked": [
+          {
+            "url": "https://api.sportsgameodds.com/v2/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          },
+          {
+            "url": "https://sportsgameodds.com/docs/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          },
+          {
+            "url": "https://sportsgameodds.com/openapi.json",
+            "status": 200,
+            "valid_spec": true
+          }
+        ]
+      },
+      "llms_txt": {
+        "found": "https://sportsgameodds.com/llms.txt",
+        "candidates_checked": [
+          {
+            "url": "https://sportsgameodds.com/llms.txt",
+            "status": 200,
+            "valid": true
+          }
+        ]
+      }
+    },
+    "therundown": {
+      "name": "TheRundown",
+      "openapi_spec": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://docs.therundown.io/openapi.json",
+            "status": 404,
+            "valid_spec": false
+          },
+          {
+            "url": "https://therundown.io/openapi.json",
+            "status": 200,
+            "valid_spec": false
+          },
+          {
+            "url": "https://therundown.io/api/v2/openapi.json",
+            "status": 200,
+            "valid_spec": false
+          }
+        ]
+      },
+      "llms_txt": {
+        "found": "https://therundown.io/llms.txt",
+        "candidates_checked": [
+          {
+            "url": "https://therundown.io/llms.txt",
+            "status": 200,
+            "valid": true
+          },
+          {
+            "url": "https://docs.therundown.io/llms.txt",
+            "status": 200,
+            "valid": true
+          }
+        ]
+      }
+    }
+  }
+}
