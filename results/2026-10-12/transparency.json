@@ -1,0 +1,102 @@
+{
+  "probe": "transparency",
+  "run_at_utc": "2026-10-12T14:47:59.786792+00:00",
+  "note": "Status page detection = HTTP 200 at a candidate URL. History flags are keyword checks against the fetched HTML and can miss JS-rendered content.",
+  "vendors": {
+    "parlayapi": {
+      "name": "ParlayAPI",
+      "status_page": {
+        "found": "https://parlay-api.com/status",
+        "candidates_checked": [
+          {
+            "url": "https://parlay-api.com/status",
+            "status": 200,
+            "error": null
+          },
+          {
+            "url": "https://status.parlay-api.com/",
+            "status": null,
+            "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+          }
+        ]
+      },
+      "uptime_history_keyword_seen": false,
+      "incident_history_keyword_seen": false
+    },
+    "the_odds_api": {
+      "name": "The Odds API",
+      "status_page": {
+        "found": "https://status.the-odds-api.com/",
+        "candidates_checked": [
+          {
+            "url": "https://status.the-odds-api.com/",
+            "status": 200,
+            "error": null
+          }
+        ]
+      },
+      "uptime_history_keyword_seen": true,
+      "incident_history_keyword_seen": true
+    },
+    "oddspapi": {
+      "name": "OddsPapi",
+      "status_page": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://status.oddspapi.io/",
+            "status": null,
+            "error": "URLError: <urlopen error [Errno -5] No address associated with hostname>"
+          }
+        ]
+      },
+      "uptime_history_keyword_seen": null,
+      "incident_history_keyword_seen": null
+    },
+    "sharpapi": {
+      "name": "SharpAPI",
+      "status_page": {
+        "found": "https://status.sharpapi.io/",
+        "candidates_checked": [
+          {
+            "url": "https://status.sharpapi.io/",
+            "status": 200,
+            "error": null
+          }
+        ]
+      },
+      "uptime_history_keyword_seen": true,
+      "incident_history_keyword_seen": true
+    },
+    "sportsgameodds": {
+      "name": "SportsGameOdds",
+      "status_page": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://status.sportsgameodds.com/",
+            "status": null,
+            "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+          }
+        ]
+      },
+      "uptime_history_keyword_seen": null,
+      "incident_history_keyword_seen": null
+    },
+    "therundown": {
+      "name": "TheRundown",
+      "status_page": {
+        "found": null,
+        "candidates_checked": [
+          {
+            "url": "https://status.therundown.io/",
+            "status": null,
+            "error": "URLError: <urlopen error [Errno -2] Name or service not known>"
+          }
+        ]
+      },
+      "uptime_history_keyword_seen": null,
+      "incident_history_keyword_seen": null
+    }
+  }
+}
