@@ -1,0 +1,69 @@
+{
+  "description": "Free tier terms as stated on each vendor's OWN public pages. Every cell carries the source URL and the date it was read. These are vendor claims, not measurements. If a vendor changes terms, open a PR or an issue with the new source URL.",
+  "vendors": {
+    "parlayapi": {
+      "free_allowance": "1,000 credits/month per the pricing page (the homepage phrases it as 1,000 requests/month; per-endpoint credit costs are published at /v1/meta/credit-costs)",
+      "card_required": "No ('no credit card required')",
+      "free_tier_delay": "Not stated as a delay; free tier includes 48 hours of historical access",
+      "book_count_claim": "'30+ sportsbooks' on both the homepage and the pricing page",
+      "notes": "Homepage states the free key covers all 90+ sport keys; pricing page states the free tier never expires.",
+      "sources": [
+        {"url": "https://parlay-api.com/pricing", "read_date": "2026-08-29"},
+        {"url": "https://parlay-api.com/", "read_date": "2026-08-29"}
+      ]
+    },
+    "the_odds_api": {
+      "free_allowance": "500 credits/month (Starter plan)",
+      "card_required": "Not stated on the cited page",
+      "free_tier_delay": "Not stated on the cited page",
+      "book_count_claim": "'over 40 bookmakers' globally",
+      "notes": "Paid plans listed on the same page: 20K, 100K, 5M, 15M credits/month.",
+      "sources": [
+        {"url": "https://the-odds-api.com/", "read_date": "2026-08-27"}
+      ]
+    },
+    "oddspapi": {
+      "free_allowance": "Not published as a fixed number on the pricing page (the page is a build-your-own-plan calculator); a vendor blog post describes a free tier of 250 requests",
+      "card_required": "'No credit card required' per vendor blog",
+      "free_tier_delay": "Not stated on the cited pages",
+      "book_count_claim": "'350+ bookmakers' (homepage claims 300+ in one section and 350+ elsewhere; both numbers appear on vendor pages)",
+      "notes": "OddsPapi's pricing is usage-configured (bookmakers x sports x requests). Free tier specifics come from vendor blog posts rather than the pricing page.",
+      "sources": [
+        {"url": "https://oddspapi.io/us/pricing", "read_date": "2026-08-27"},
+        {"url": "https://oddspapi.io/", "read_date": "2026-08-27"},
+        {"url": "https://oddspapi.io/blog/free-odds-api-350-bookmakers/", "read_date": "2026-08-27"}
+      ]
+    },
+    "sharpapi": {
+      "free_allowance": "12 requests/min (~17,280/day), no monthly cap stated",
+      "card_required": "No ('no credit card')",
+      "free_tier_delay": "60s data delay on free tier; pre-match only (live polling requires Pro+)",
+      "book_count_claim": "2 sportsbooks on free tier (DraftKings, FanDuel); '40+ US sportsbooks' overall",
+      "notes": "Paid plans: Hobby $79/mo, Pro $229/mo, Sharp $399/mo, Enterprise custom (prices as listed on vendor pricing page on the read date).",
+      "sources": [
+        {"url": "https://sharpapi.io/pricing", "read_date": "2026-08-27"}
+      ]
+    },
+    "sportsgameodds": {
+      "free_allowance": "2,500 objects/month (Amateur plan), 10 requests/min",
+      "card_required": "Not stated on the cited page",
+      "free_tier_delay": "10-minute update frequency on free tier",
+      "book_count_claim": "9 bookmakers on free tier; 82+ on top plans",
+      "notes": "Pricing is per event object, not per market/bookmaker combination.",
+      "sources": [
+        {"url": "https://sportsgameodds.com/pricing", "read_date": "2026-08-27"}
+      ]
+    },
+    "therundown": {
+      "free_allowance": "20,000 data points/day and 200,000/month, 1 req/sec",
+      "card_required": "No ('No credit card')",
+      "free_tier_delay": "5-minute delay on free tier",
+      "book_count_claim": "'20+ sportsbooks and exchanges' including Kalshi, Polymarket, Novig, ProphetX; free tier includes 3 sportsbooks",
+      "notes": "Terms quoted from the structured product data embedded in the vendor's pricing page. Reference endpoints (/sports, /affiliates, /markets) are documented as free regardless of tier.",
+      "sources": [
+        {"url": "https://therundown.io/pricing/api", "read_date": "2026-08-27"},
+        {"url": "https://docs.therundown.io/quickstart", "read_date": "2026-08-27"}
+      ]
+    }
+  }
+}
