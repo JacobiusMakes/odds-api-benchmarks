@@ -6,7 +6,7 @@ Reproducible, no-key-required benchmarks of sports odds APIs: [ParlayAPI](https:
 
 > **Disclosure:** this repo is maintained by ParlayAPI's founder. That is exactly why every number here is produced by a script you can run yourself, from this repo alone, with no API keys and no accounts. If a cell is wrong, the probe or the citation is wrong, and a PR fixes it. **PRs from competitors are welcome and will be merged if honest.**
 
-Latest run: **2026-11-16**, committed under [`results/2026-11-16/`](results/2026-11-16/). A GitHub Action re-runs the probes weekly (Monday 06:00 UTC). See [METHODOLOGY.md](METHODOLOGY.md) for scope and limitations, which are significant: v1 measures only what is measurable without paid keys. It says nothing about paid-tier data quality, odds accuracy, or update speed.
+Latest run: **2026-11-23**, committed under [`results/2026-11-23/`](results/2026-11-23/). A GitHub Action re-runs the probes weekly (Monday 06:00 UTC). See [METHODOLOGY.md](METHODOLOGY.md) for scope and limitations, which are significant: v1 measures only what is measurable without paid keys. It says nothing about paid-tier data quality, odds accuracy, or update speed.
 
 ## Run it yourself
 
@@ -20,7 +20,7 @@ That reruns every probe from your machine and regenerates this README from your 
 
 ## 1. Try-before-signup surface (probed live)
 
-Single GET to each vendor's documented endpoints with **no API key**. Raw outcomes in [`results/2026-11-16/unauth.json`](results/2026-11-16/unauth.json).
+Single GET to each vendor's documented endpoints with **no API key**. Raw outcomes in [`results/2026-11-23/unauth.json`](results/2026-11-23/unauth.json).
 
 | Vendor | Keyless endpoints found | Probe outcomes |
 |---|---|---|
@@ -35,7 +35,7 @@ Probe targets and the docs page documenting each are listed in [`data/vendors.js
 
 ## 2. Free tier terms (vendor claims, cited)
 
-These are the vendors' own claims from their own public pages, quoted with source URL and read date. They are **not** measurements. Snapshot: [`results/2026-11-16/free_tier.json`](results/2026-11-16/free_tier.json).
+These are the vendors' own claims from their own public pages, quoted with source URL and read date. They are **not** measurements. Snapshot: [`results/2026-11-23/free_tier.json`](results/2026-11-23/free_tier.json).
 
 | Vendor | Free allowance | Card required | Free tier delay | Book count claim | Source |
 |---|---|---|---|---|---|
@@ -48,7 +48,7 @@ These are the vendors' own claims from their own public pages, quoted with sourc
 
 ## 3. Docs quality signals (probed live)
 
-Raw outcomes in [`results/2026-11-16/docs.json`](results/2026-11-16/docs.json). "no" means not found at the candidate URLs in `data/vendors.json`; PR the correct URL if one exists elsewhere.
+Raw outcomes in [`results/2026-11-23/docs.json`](results/2026-11-23/docs.json). "no" means not found at the candidate URLs in `data/vendors.json`; PR the correct URL if one exists elsewhere.
 
 | Vendor | Machine-readable OpenAPI spec | llms.txt |
 |---|---|---|
@@ -61,7 +61,7 @@ Raw outcomes in [`results/2026-11-16/docs.json`](results/2026-11-16/docs.json). 
 
 ## 4. Transparency (probed live)
 
-Raw outcomes in [`results/2026-11-16/transparency.json`](results/2026-11-16/transparency.json). History columns are shallow keyword checks against the fetched HTML; JS-rendered status pages can under-report, so treat a "no" here as "not detected", not "absent".
+Raw outcomes in [`results/2026-11-23/transparency.json`](results/2026-11-23/transparency.json). History columns are shallow keyword checks against the fetched HTML; JS-rendered status pages can under-report, so treat a "no" here as "not detected", not "absent".
 
 | Vendor | Public status page | Uptime history detected | Incident/update history detected |
 |---|---|---|---|
@@ -74,18 +74,18 @@ Raw outcomes in [`results/2026-11-16/transparency.json`](results/2026-11-16/tran
 
 ## 5. Public endpoint latency, one vantage point (probed live)
 
-n=20 sequential GETs per target, median and p90 of total round-trip time. Raw samples context in [`results/2026-11-16/latency.json`](results/2026-11-16/latency.json). A p50/p95 summary table with success rates is regenerated into [RESULTS.md](RESULTS.md) on every run, along with the badge data in `badge-latency.json`.
+n=20 sequential GETs per target, median and p90 of total round-trip time. Raw samples context in [`results/2026-11-23/latency.json`](results/2026-11-23/latency.json). A p50/p95 summary table with success rates is regenerated into [RESULTS.md](RESULTS.md) on every run, along with the badge data in `badge-latency.json`.
 
 **Caveats, do not skip:** Single vantage point. Includes TLS + full response for small payloads. 401 responses measure auth-rejection latency, not data latency. Not comparable to odds update frequency.
 
 | Vendor | Target | Statuses seen | Median | p90 |
 |---|---|---|---|---|
-| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 266 ms | 1163 ms |
-| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 98 ms | 157 ms |
-| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 244 ms | 338 ms |
-| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 119 ms | 128 ms |
-| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 211 ms | 464 ms |
-| TheRundown | keyless API endpoint /api/v2/sports | [200] | 168 ms | 250 ms |
+| ParlayAPI | keyless API endpoint /live/api/sports | [200] | 461 ms | 1479 ms |
+| The Odds API | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 49 ms | 74 ms |
+| OddsPapi | API edge: /v4/sports (returns 401 without key; measures edge round trip only) | [401] | 140 ms | 162 ms |
+| SharpAPI | API edge: /api/v1/odds (returns 401 without key; measures edge round trip only) | [401, 429] | 39 ms | 54 ms |
+| SportsGameOdds | API edge: /v2/sports (returns 401 without key; measures edge round trip only) | [401] | 113 ms | 2025 ms |
+| TheRundown | keyless API endpoint /api/v2/sports | [200] | 78 ms | 126 ms |
 
 ## Fairness notes: what each vendor does well
 
