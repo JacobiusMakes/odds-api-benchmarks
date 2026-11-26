@@ -90,6 +90,21 @@
       "llms_txt_candidates": ["https://therundown.io/llms.txt", "https://docs.therundown.io/llms.txt"],
       "status_page_candidates": ["https://status.therundown.io/"],
       "latency_target": {"label": "keyless API endpoint /api/v2/sports", "url": "https://therundown.io/api/v2/sports"}
+    },
+    "pinnfeed": {
+      "name": "PinnFeed",
+      "site": "https://pinnfeed.io",
+      "docs_url": "https://pinnfeed.io/docs",
+      "pricing_url": "https://pinnfeed.io/pricing",
+      "unauth_probes": [
+        {"label": "GET /v1/sports without key", "url": "https://pinnfeed.io/v1/sports", "documented_at": "https://pinnfeed.io/openapi.json"},
+        {"label": "GET /health (service health)", "url": "https://pinnfeed.io/health", "documented_at": "https://pinnfeed.io/docs"}
+      ],
+      "primary_data_probe": {"label": "GET /v1/sports without key", "url": "https://pinnfeed.io/v1/sports"},
+      "openapi_candidates": ["https://pinnfeed.io/openapi.json"],
+      "llms_txt_candidates": ["https://pinnfeed.io/llms.txt"],
+      "status_page_candidates": ["https://pinnfeed.io/health"],
+      "latency_target": {"label": "API edge: /v1/sports (returns 401 without key; measures edge round trip only)", "url": "https://pinnfeed.io/v1/sports"}
     }
   }
 }

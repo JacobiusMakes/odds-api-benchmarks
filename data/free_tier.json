@@ -64,6 +64,16 @@
         {"url": "https://therundown.io/pricing/api", "read_date": "2026-08-27"},
         {"url": "https://docs.therundown.io/quickstart", "read_date": "2026-08-27"}
       ]
+    },
+    "pinnfeed": {
+      "free_allowance": "1,000 requests/day (Free plan, REST only, 2 sports of your choice, main markets)",
+      "card_required": "No ('No card' on the Free plan; paid plans' 3-day trials require a card)",
+      "free_tier_delay": "30-second delay on the Free plan (REST snapshots)",
+      "book_count_claim": "Pinnacle only (single sharp book)",
+      "notes": "Free and Realtime REST use HTTP snapshots. Builder adds WebSocket access at USD 139 per month on monthly billing.",
+      "sources": [
+        {"url": "https://pinnfeed.io/pricing", "read_date": "2026-11-26"}
+      ]
     }
   }
 }
