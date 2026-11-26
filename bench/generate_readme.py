@@ -12,9 +12,7 @@ import sys
 from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent))
-from common import ROOT
-
-ORDER = ["parlayapi", "the_odds_api", "oddspapi", "sharpapi", "sportsgameodds", "therundown"]
+from common import ROOT, load_vendors
 
 
 def latest_date():
@@ -48,10 +46,12 @@ def main(date=None):
       "badge = ParlayAPI's own p50 from the latest weekly run, single vantage point; "
       "full table with every vendor, caveats included, in [RESULTS.md](RESULTS.md).")
     A("")
-    A("Reproducible, no-key-required benchmarks of sports odds APIs: "
-      "[ParlayAPI](https://parlay-api.com), [The Odds API](https://the-odds-api.com), "
-      "[OddsPapi](https://oddspapi.io), [SharpAPI](https://sharpapi.io), "
-      "[SportsGameOdds](https://sportsgameodds.com), [TheRundown](https://therundown.io).")
+    configured = load_vendors()
+    links = []
+    for vid, entry in unauth["vendors"].items():
+        site = entry.get("site") or configured.get(vid, {}).get("site")
+        links.append(f"[{entry['name']}]({site})" if site else entry["name"])
+    A("Reproducible, no-key-required benchmarks of sports odds APIs: " + ", ".join(links) + ".")
     A("")
     A("> **Disclosure:** this repo is maintained by ParlayAPI's founder. That is exactly why "
       "every number here is produced by a script you can run yourself, from this repo alone, "
@@ -83,7 +83,7 @@ def main(date=None):
     A("")
     A("| Vendor | Keyless endpoints found | Probe outcomes |")
     A("|---|---|---|")
-    for vid in ORDER:
+    for vid in unauth["vendors"]:
         v = unauth["vendors"][vid]
         parts = []
         for p in v["probes"]:
@@ -106,7 +106,7 @@ def main(date=None):
     A("")
     A("| Vendor | Free allowance | Card required | Free tier delay | Book count claim | Source |")
     A("|---|---|---|---|---|---|")
-    for vid in ORDER:
+    for vid in unauth["vendors"]:
         f = free[vid]
         name = unauth["vendors"][vid]["name"]
         srcs = ", ".join(f"[{s['url'].split('//')[1].rstrip('/')}]({s['url']}) (read {s['read_date']})" for s in f["sources"])
@@ -122,7 +122,7 @@ def main(date=None):
     A("")
     A("| Vendor | Machine-readable OpenAPI spec | llms.txt |")
     A("|---|---|---|")
-    for vid in ORDER:
+    for vid in unauth["vendors"]:
         d = docs["vendors"][vid]
         oa = d["openapi_spec"]["found"]
         ll = d["llms_txt"]["found"]
@@ -138,7 +138,7 @@ def main(date=None):
     A("")
     A("| Vendor | Public status page | Uptime history detected | Incident/update history detected |")
     A("|---|---|---|---|")
-    for vid in ORDER:
+    for vid in unauth["vendors"]:
         t = trans["vendors"][vid]
         sp = t["status_page"]["found"]
         A(f"| {t['name']} | {f'yes ([link]({sp}))' if sp else 'not found at probed URLs'} | "
@@ -158,7 +158,7 @@ def main(date=None):
     A("")
     A("| Vendor | Target | Statuses seen | Median | p90 |")
     A("|---|---|---|---|---|")
-    for vid in ORDER:
+    for vid in unauth["vendors"]:
         e = lat["vendors"][vid]
         med = f"{e['median_s'] * 1000:.0f} ms" if e["median_s"] is not None else "n/a"
         p90 = f"{e['p90_s'] * 1000:.0f} ms" if e["p90_s"] is not None else "n/a"

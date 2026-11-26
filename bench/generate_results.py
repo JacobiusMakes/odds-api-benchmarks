@@ -16,8 +16,6 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent))
 from common import ROOT
 
-ORDER = ["parlayapi", "the_odds_api", "oddspapi", "sharpapi", "sportsgameodds", "therundown"]
-
 
 def latest_date():
     dates = sorted(p.name for p in (ROOT / "results").iterdir() if p.is_dir())
@@ -62,8 +60,7 @@ def main(date=None):
     A("")
     A("| Provider | What was measured | Statuses seen | p50 | p95 | Success rate | Sample size | Run date |")
     A("|---|---|---|---|---|---|---|---|")
-    for vid in ORDER:
-        e = lat["vendors"][vid]
+    for e in lat["vendors"].values():
         attempted = e.get("n_attempted", e["n_ok"] + e["errors"])
         success = f"{e['n_ok']}/{attempted}"
         A(f"| {e['name']} | {e['target']} | {e['response_statuses_seen']} "

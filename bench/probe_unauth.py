@@ -54,6 +54,7 @@ def main(out_dir):
         keyless = [p for p in probes if p["classification"].startswith("keyless")]
         out["vendors"][vid] = {
             "name": v["name"],
+            "site": v["site"],
             "keyless_endpoints_found": len(keyless),
             "probes": probes,
         }
